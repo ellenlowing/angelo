@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Angelo</title>
+    <style>
+      body  {
+        padding: 1em;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+    
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+
+    <img src="https://image.ibb.co/hxoz7K/logo.png" alt="logo" style="width:20%" border="0">
+
+    <h2 class="alert" id="alertsign" style="color: #FF0000">NEW ALERT!!!!!</h2>
+
+      <h3 class="alert" >Time: <span id="time"></span></h3>
+      <h3 class="alert" >Date: <span id="date"></span></h3>
+      <h3 class="alert" >Location: <span id="location"></span></h3>
+    
+
+    <script>
+      var socket = io.connect();
+
+
+      socket.on('osc', function(data) {
+        
+        var time = document.getElementById('time');
+        var date = document.getElementById('date');
+        var location = document.getElementById('location');
+        time.innerHTML = data.time;
+        date.innerHTML = "9/17/2018";
+        location.innerHTML = "MIT Media Lab";
+        // var alerts = document.getElementsByClass("alert");
+        // for(var i = 0; i < alerts.length; i++){
+        //   alerts[i].style.display = "inline";
+        // }
+      });
+
+    </script>
+
+  </body>
+</html>
